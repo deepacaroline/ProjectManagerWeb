@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ProjectManagerDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ParentTaskTable">
+    <Key>
+      <PropertyRef Name="ParentTaskID" />
+    </Key>
+    <Property Name="ParentTaskID" Type="Int32" Nullable="false" />
+    <Property Name="ParentTaskName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="ProjectTable">
+    <Key>
+      <PropertyRef Name="ProjectID" />
+    </Key>
+    <Property Name="ProjectID" Type="Int32" Nullable="false" />
+    <Property Name="ProjectName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ProjectStartDate" Type="DateTime" Precision="3" />
+    <Property Name="ProjectEndDate" Type="DateTime" Precision="3" />
+    <Property Name="ProjectPriority" Type="Int32" />
+    <Property Name="ProjectManagerID" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TaskTable">
+    <Key>
+      <PropertyRef Name="TaskID" />
+    </Key>
+    <Property Name="TaskID" Type="Int32" Nullable="false" />
+    <Property Name="TaskName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TaskProjectID" Type="Int32" Nullable="false" />
+    <Property Name="TaskParentID" Type="Int32" />
+    <Property Name="TaskPriority" Type="Int32" Nullable="false" />
+    <Property Name="TaskStartDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="TaskEndDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="TaskOwnerID" Type="Int32" Nullable="false" />
+    <Property Name="TaskStatus" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserTable">
+    <Key>
+      <PropertyRef Name="EmpID" />
+    </Key>
+    <Property Name="EmpID" Type="Int32" Nullable="false" />
+    <Property Name="EmpFirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="EmpLastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityContainer Name="ProjectManagerDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ParentTaskTables" EntityType="Self.ParentTaskTable" />
+    <EntitySet Name="ProjectTables" EntityType="Self.ProjectTable" />
+    <EntitySet Name="TaskTables" EntityType="Self.TaskTable" />
+    <EntitySet Name="UserTables" EntityType="Self.UserTable" />
+  </EntityContainer>
+</Schema>

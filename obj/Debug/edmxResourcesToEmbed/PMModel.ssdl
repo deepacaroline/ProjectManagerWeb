@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ProjectManagerDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ParentTaskTable">
+    <Key>
+      <PropertyRef Name="ParentTaskID" />
+    </Key>
+    <Property Name="ParentTaskID" Type="int" Nullable="false" />
+    <Property Name="ParentTaskName" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="ProjectTable">
+    <Key>
+      <PropertyRef Name="ProjectID" />
+    </Key>
+    <Property Name="ProjectID" Type="int" Nullable="false" />
+    <Property Name="ProjectName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ProjectStartDate" Type="datetime" />
+    <Property Name="ProjectEndDate" Type="datetime" />
+    <Property Name="ProjectPriority" Type="int" />
+    <Property Name="ProjectManagerID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TaskTable">
+    <Key>
+      <PropertyRef Name="TaskID" />
+    </Key>
+    <Property Name="TaskID" Type="int" Nullable="false" />
+    <Property Name="TaskName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="TaskProjectID" Type="int" Nullable="false" />
+    <Property Name="TaskParentID" Type="int" />
+    <Property Name="TaskPriority" Type="int" Nullable="false" />
+    <Property Name="TaskStartDate" Type="datetime" Nullable="false" />
+    <Property Name="TaskEndDate" Type="datetime" Nullable="false" />
+    <Property Name="TaskOwnerID" Type="int" Nullable="false" />
+    <Property Name="TaskStatus" Type="char" MaxLength="1" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserTable">
+    <Key>
+      <PropertyRef Name="EmpID" />
+    </Key>
+    <Property Name="EmpID" Type="int" Nullable="false" />
+    <Property Name="EmpFirstName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="EmpLastName" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityContainer Name="ProjectManagerDBModelStoreContainer">
+    <EntitySet Name="ParentTaskTable" EntityType="Self.ParentTaskTable" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProjectTable" EntityType="Self.ProjectTable" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TaskTable" EntityType="Self.TaskTable" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserTable" EntityType="Self.UserTable" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>
