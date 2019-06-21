@@ -117,7 +117,7 @@ namespace ProjectManagerWeb.Controllers
         }
 
         protected override void Dispose(bool disposing)
-        {
+        { 
             if (disposing)
             {
                 db.Dispose();
